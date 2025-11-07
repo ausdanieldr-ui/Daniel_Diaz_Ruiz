@@ -4,7 +4,7 @@
 
 - 🧬 Bioquímico e Inmunólogo 👨‍🔬
 - 💻 Científico de datos en formación 📚
-- 🌍 Idiomas: 🇬🇧 🇪🇸
+- 🌍 Idiomas: 🇬🇧 Inglés | 🇪🇸 Español
 - 📧 Contacto: [ausdanieldr@gmail.com](mailto:ausdanieldr@gmail.com)
 
 ## 🧠 Tecnologías conocidas
