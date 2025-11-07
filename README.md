@@ -7,7 +7,7 @@
 - 🌍 Idiomas: 🇬🇧 🇪🇸
 - 📧 Contacto: [ausdanieldr@gmail.com](mailto:ausdanieldr@gmail.com)
 
-## 💻 Tecnologías conocidas
+## 🧠 Tecnologías conocidas
 
 <p align="center">
   <a href="https://skillicons.dev">
