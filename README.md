@@ -14,7 +14,7 @@
 ## 💻 Tecnologías conocidas
 
 <p align="center">
-  <img src="https://skillicons.dev/iconsi=python,vscode,r,mysql,py,sklearn,tensorflow,pytorch,pandas,jupyter" />
+  <img src="https://skillicons.dev/iconsi=python,vscode,r,mysql" />
 </p>
 
 <p align="center">
