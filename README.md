@@ -35,7 +35,7 @@
 | Proyecto | Descripción | Tecnologías |
 | :--- | :--- | :--- |
 | **[👤 Controlador de Asistencia](./Controlador-Asistencia/)** | Sistema de biometría facial en tiempo real para registro de empleados. | `OpenCV`, `Face Recognition` |
-| **[🎙️ Asistente Virtual](./Asistente-Voz/)** | Asistente por voz (NLP) con integración de APIs financieras y búsqueda web. | `SpeechRecognition`, `Pyttsx3` |
+| **[🎙️ Asistente Virtual](./Asistente-Voz/)** | Asistente por voz (NLP) con integración de APIs financieras y búsqueda web. | `Speech-to-Text,`, `APIs` |
 | **[🕸️ Web Scraping](./Web-Scraping/)** | Extractor de datos automatizado y buscador de libros con filtrado de rating. | `BeautifulSoup`, `Requests` |
 | **[🚀 Invasión Espacial](./Invasion-Espacial/)** | Videojuego clásico desarrollado con lógica de programación orientada a objetos. | `Pygame` |
 
