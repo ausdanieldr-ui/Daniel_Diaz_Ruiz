@@ -1,6 +1,6 @@
 ### 🛠️ Tecnologías Globales
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=py,vscode,r,mssql,opencv,github,html,css" />
+  <img src="https://skillicons.dev/icons?i=py,vscode,opencv,github,html,css" />
 </p>
 
 ---
