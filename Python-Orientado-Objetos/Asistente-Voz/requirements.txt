@@ -1,0 +1,10 @@
+requests
+beautifulsoup4
+lxml
+pyttsx3
+SpeechRecognition
+pywhatkit
+yfinance
+pyjokes
+wikipedia
+PyAudio

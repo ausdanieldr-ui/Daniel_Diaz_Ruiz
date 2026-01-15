@@ -1,0 +1,29 @@
+# ==========================================
+# 🎙️ ASISTENTE DE VOZ 
+# ==========================================
+pyttsx3
+SpeechRecognition
+pywhatkit
+yfinance
+pyjokes
+wikipedia
+PyAudio
+
+# ==========================================
+# 👤 CONTROLADOR DE ASISTENCIA (BIOMETRÍA)
+# ==========================================
+opencv-python
+face-recognition
+numpy
+
+# ==========================================
+# 🕸️ WEB SCRAPING
+# ==========================================
+requests
+beautifulsoup4
+lxml
+
+# ==========================================
+# 🚀 INVASIÓN ESPACIAL (GAME)
+# ==========================================
+pygame
