@@ -4,8 +4,8 @@
 
 ## 📖 Sobre mí
 
+- 👨🏻‍💻 Científico de datos 📊
 - 🧬 Bioquímico e Inmunólogo 👨‍🔬
-- 💻 Científico de datos en formación 📚
 - 🌍 Idiomas: 🇬🇧 Inglés | 🇪🇸 Español
 - 📧 Contacto: [ausdanieldr@gmail.com](mailto:ausdanieldr@gmail.com)
 
@@ -29,7 +29,7 @@
   <img src="https://img.shields.io/badge/AlphaFold-0F9D58?style=for-the-badge&logo=deepmind&logoColor=white" alt="AlphaFold"/>
 </p>
 
-## 🧠Proyectos durante mi formación
+## 🧠Mis Proyectos
 
 *Próximamente...*
 
