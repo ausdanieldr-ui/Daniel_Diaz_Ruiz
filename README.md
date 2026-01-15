@@ -27,7 +27,9 @@
   <img src="https://img.shields.io/badge/PubMed-326599?style=for-the-badge&logo=pubmed&logoColor=white" alt="PubMed"/>
   <img src="https://img.shields.io/badge/LIMS-4B9CD3?style=for-the-badge" alt="LIMS"/>
   <img src="https://img.shields.io/badge/AlphaFold-0F9D58?style=for-the-badge&logo=deepmind&logoColor=white" alt="AlphaFold"/>
+  <img src="https://img.icons8.com/color/48/000000/microsoft-sql-server.png" alt="SQL Server" width="40" height="40">
 </p>
+
 
 ## 🧠Mis Proyectos
 
