@@ -4,19 +4,23 @@
 
 ## 📖 Sobre mí
 
-- 👨🏻‍💻 Científico de datos 📊
-- 🧬 Bioquímico e Inmunólogo 👨‍🔬
-- 🌍 Idiomas: 🇬🇧 Inglés | 🇪🇸 Español
-- 📧 Contacto: [ausdanieldr@gmail.com](mailto:ausdanieldr@gmail.com)
+- 👨🏻‍💻 **Científico de Datos**
+- 🧬 **Bioquímico e Inmunólogo**
+- 🌍 **Idiomas**: 
+  - 🇪🇸 **Español**: Nativo.
+  - 🇬🇧 **Inglés**: Profesional (C1/B2).
+- ✉️ **Contacto**: [ausdanieldr@gmail.com](mailto:ausdanieldr@gmail.com)
 
-  
+---
 
-## 💻 Tecnologías conocidas
+## 💻 Tecnologías y Herramientas
 
+### 🚀 Programación, IA y Ciencia de Datos
 <p align="center">
-  <img src="https://skillicons.dev/iconsi=python,vscode,r,mysql" />
+  <img src="https://skillicons.dev/icons?i=py,r,sklearn,pandas,opencv,jupyter,vscode,github,mssql,mysql,html,css" />
 </p>
 
+### 🧪 Análisis de Datos y Bioinformática
 <p align="center">
   <img src="https://img.shields.io/badge/SPSS-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="SPSS"/>
   <img src="https://img.shields.io/badge/GraphPad_Prism-FF6F00?style=for-the-badge&logo=graphpad&logoColor=white" alt="GraphPad"/>
@@ -25,22 +29,24 @@
   <img src="https://img.shields.io/badge/NCBI-005A9C?style=for-the-badge" alt="NCBI"/>
   <img src="https://img.shields.io/badge/UniProt-00A5E3?style=for-the-badge" alt="UniProt"/>
   <img src="https://img.shields.io/badge/PubMed-326599?style=for-the-badge&logo=pubmed&logoColor=white" alt="PubMed"/>
-  <img src="https://img.shields.io/badge/LIMS-4B9CD3?style=for-the-badge" alt="LIMS"/>
   <img src="https://img.shields.io/badge/AlphaFold-0F9D58?style=for-the-badge&logo=deepmind&logoColor=white" alt="AlphaFold"/>
 </p>
 
+---
 
-## 🧠Mis Proyectos
+## 🧠 Mis Proyectos
 
 | Proyecto | Descripción | Tecnologías |
 | :--- | :--- | :--- |
-| **[👤 Controlador de Asistencia](./Controlador-Asistencia/)** | Sistema de biometría facial en tiempo real para registro de empleados. | `OpenCV`, `Face Recognition` |
-| **[🎙️ Asistente Virtual](./Asistente-Voz/)** | Asistente por voz (NLP) con integración de APIs financieras y búsqueda web. | `Speech-to-Text,`, `APIs` |
-| **[🕸️ Web Scraping](./Web-Scraping/)** | Extractor de datos automatizado y buscador de libros con filtrado de rating. | `BeautifulSoup`, `Requests` |
-| **[🚀 Invasión Espacial](./Invasion-Espacial/)** | Videojuego clásico desarrollado con lógica de programación orientada a objetos. | `Pygame` |
+| **[🛡️ Detección de Cyberbullying](./detection-cyberbullying/)** | Pipeline integral (End-to-End) para la detección y clasificación de contenido ofensivo mediante NLP avanzado. Incluye preprocesamiento masivo, traducción automática y comparación de modelos. | `DistilBERT (Transformers)`, `NLP`, `Deep Learning`, `Scikit-learn` |
+| **[👤 Controlador de Asistencia](./Controlador-Asistencia/)** | Sistema de biometría facial en tiempo real que identifica personas y registra su asistencia automáticamente en un archivo local. | `OpenCV`, `Face Recognition`, `NumPy` |
+| **[🎙️ Asistente Virtual](./Asistente-Voz/)** | Asistente inteligente de voz capaz de procesar lenguaje natural para ejecutar comandos y automatizar tareas. | `Speech-to-Text`, `APIs`, `Python` |
+| **[🕸️ Web Scraping](./Web-Scraping/)** | Herramientas de extracción de datos automatizada con lógica de paginación y descarga de archivos multimedia. | `BeautifulSoup`, `Requests`, `LXML` |
+| **[🚀 Invasión Espacial](./Invasion-Espacial/)** | Videojuego clásico desarrollado bajo el paradigma de programación orientada a objetos, gestionando eventos y colisiones en tiempo real. | `Pygame`, `OOP` |
 
+---
 
-## 🎩 Otros proyectos interesantes
+## 🎩 Otros proyectos 
 
 ### Competición en iGEM (International Genetically Engineered Machine)
 Proyecto innovador para reutilizar los residuos de aceites para crear biopintura.
