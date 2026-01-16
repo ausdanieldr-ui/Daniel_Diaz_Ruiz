@@ -23,16 +23,16 @@ El sistema está diseñado para ser operado mediante **interfaces de línea de c
 ### 1. Entrenamiento de Modelos
 El script permite entrenar modelos específicos o ejecutar el pipeline completo de forma masiva:
 
-#### Entrenar todos los modelos del pipeline
+* #### Entrenar todos los modelos del pipeline
 python src/train.py --model all
 
-#### Entrenar específicamente DistilBERT
+* #### Entrenar específicamente DistilBERT
 python src/train.py --model DistilBERT --retrain
 
 ### 2. Inferencia (Predicción)
 Interfaz limpia para clasificar nuevos textos en tiempo real:
 
-#### Clasificar un texto de forma directa
+* #### Clasificar un texto de forma directa
 python src/predict.py "ejemplo de texto" --model "Logistic Regression"
 
 
