@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Project Data & Models
+# Keep the directory structure but ignore large data/models if you want, 
+# but usually we want to track models if they are small (joblib).
+# If dataset is large, ignore it.
+data/raw/
+data/processed/*.csv
+!data/processed/.gitkeep
+
+# Results (images)
+results/
+# models (if large files)
+# models/*.joblib
+# models/*.pkl
+
+# Archive
+archive/
+
+# Logs
+*.log
