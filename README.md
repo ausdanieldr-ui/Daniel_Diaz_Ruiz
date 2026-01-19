@@ -9,7 +9,7 @@
 
 ## 📖 About Me
 
-I am a hybrid profile passionate about **Data Science** applied to **Biomedicine**. My work focuses on developing intelligent solutions that combine big data analysis with deep scientific knowledge.
+I am a hybrid profile passionate about **Data Science** with an academic background in **Biochemistry**. My work focuses on developing intelligent solutions that combine big data analysis with deep scientific knowledge.
 
 - 👨🏻‍💻 **Data Scientist**: Specialized in creating end-to-end Machine Learning pipelines, NLP, and Computer Vision.
 - 🧬 **Biochemist & Immunologist**: Expert in handling and analyzing complex scientific data and applied bioinformatics.
