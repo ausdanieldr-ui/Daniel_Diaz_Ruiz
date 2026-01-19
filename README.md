@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="right">
   <a href="README.md"><img src="https://img.shields.io/badge/Read_in-English-en" alt="English"/></a>
   <a href="README.es.md"><img src="https://img.shields.io/badge/Leer_en-Español-es" alt="Spanish"/></a>
@@ -29,31 +28,6 @@ I am a hybrid profile passionate about **Data Science** applied to **Biomedicine
 </p>
 
 ### 🧪 Data Analysis & Bioinformatics
-=======
-# 👋 Hola, soy Dani
-<img width="1206" height="758" alt="encabezado_github" src="https://github.com/user-attachments/assets/ccee3093-6a30-489e-b928-c34b89300bc5" />
-
-
-## 📖 Sobre mí
-
-- 👨🏻‍💻 **Científico de Datos**
-- 🧬 **Bioquímico e Inmunólogo**
-- 🌍 **Idiomas**: 
-  - 🇪🇸 **Español**: Nativo.
-  - 🇬🇧 **Inglés**: Profesional (C1/B2).
-- ✉️ **Contacto**: [ausdanieldr@gmail.com](mailto:ausdanieldr@gmail.com)
-
----
-
-## 💻 Tecnologías y Herramientas
-
-### 🚀 Programación, IA y Ciencia de Datos
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=py,r,sklearn,pandas,opencv,jupyter,vscode,github,mssql,mysql,html,css" />
-</p>
-
-### 🧪 Análisis de Datos y Bioinformática
->>>>>>> f15e224e61a8cc8f9fbdf60766ae9bb3d6ca7e42
 <p align="center">
   <img src="https://img.shields.io/badge/SPSS-052FAD?style=for-the-badge&logo=ibm&logoColor=white" alt="SPSS"/>
   <img src="https://img.shields.io/badge/GraphPad_Prism-FF6F00?style=for-the-badge&logo=graphpad&logoColor=white" alt="GraphPad"/>
@@ -67,11 +41,7 @@ I am a hybrid profile passionate about **Data Science** applied to **Biomedicine
 
 ---
 
-<<<<<<< HEAD
 ## 🧠 My Projects
-=======
-## 🧠 Mis Proyectos
->>>>>>> f15e224e61a8cc8f9fbdf60766ae9bb3d6ca7e42
 
 | Project | Description | Technologies |
 | :--- | :--- | :--- |
@@ -85,17 +55,6 @@ I am a hybrid profile passionate about **Data Science** applied to **Biomedicine
 ---
 
 ## 🎩 Other projects 
-=======
-| **[🛡️ Detección de Cyberbullying](./detection-cyberbullying/)** | Pipeline integral (End-to-End) para la detección y clasificación de contenido ofensivo mediante NLP avanzado. Incluye preprocesamiento masivo, traducción automática y comparación de modelos. | `DistilBERT (Transformers)`, `NLP`, `Deep Learning`, `Scikit-learn` |
-| **[👤 Controlador de Asistencia](./Controlador-Asistencia/)** | Sistema de biometría facial en tiempo real que identifica personas y registra su asistencia automáticamente en un archivo local. | `OpenCV`, `Face Recognition`, `NumPy` |
-| **[🎙️ Asistente Virtual](./Asistente-Voz/)** | Asistente inteligente de voz capaz de procesar lenguaje natural para ejecutar comandos y automatizar tareas. | `Speech-to-Text`, `APIs`, `Python` |
-| **[🕸️ Web Scraping](./Web-Scraping/)** | Herramientas de extracción de datos automatizada con lógica de paginación y descarga de archivos multimedia. | `BeautifulSoup`, `Requests`, `LXML` |
-| **[🚀 Invasión Espacial](./Invasion-Espacial/)** | Videojuego clásico desarrollado bajo el paradigma de programación orientada a objetos, gestionando eventos y colisiones en tiempo real. | `Pygame`, `OOP` |
-
----
-
-## 🎩 Otros proyectos 
->>>>>>> f15e224e61a8cc8f9fbdf60766ae9bb3d6ca7e42
 
 ### iGEM Competition (International Genetically Engineered Machine)
 Innovative project to reuse oil waste to create biopaint.
