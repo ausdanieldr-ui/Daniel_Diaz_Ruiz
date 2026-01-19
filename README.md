@@ -1,5 +1,4 @@
 <p align="right">
-  <a href="README.md"><img src="https://img.shields.io/badge/Read_in-English-en" alt="English"/></a>
   <a href="README.es.md"><img src="https://img.shields.io/badge/Leer_en-Español-es" alt="Spanish"/></a>
 </p>
 
