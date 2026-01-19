@@ -44,8 +44,6 @@ I am a hybrid profile passionate about **Data Science** applied to **Biomedicine
 ## 🧠 My Projects
 
 | Project | Description | Technologies |
-| :--- | :--- | :--- |
-<<<<<<< HEAD
 | **[🛡️ Cyberbullying Detection](./05-cyberbullying-detection/)** | End-to-End pipeline for offensive content detection using advanced NLP. Includes massive preprocessing, automatic translation, and model comparison. | `DistilBERT`, `NLP`, `Deep Learning`, `Scikit-learn` |
 | **[👤 Attendance Controller](./Controlador-Asistencia/)** | Real-time facial biometry system that identifies individuals and automatically registers attendance in local files. | `OpenCV`, `Face Recognition`, `NumPy` |
 | **[🎙️ Virtual Assistant](./Asistente-Voz/)** | Intelligent voice assistant capable of processing natural language to execute commands and automate tasks through various APIs. | `Speech-to-Text`, `APIs`, `Python` |
