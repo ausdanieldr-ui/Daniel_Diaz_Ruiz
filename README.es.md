@@ -45,7 +45,7 @@ Soy un perfil híbrido apasionado por la **Ciencia de Datos** con un background 
 
 | Proyecto | Descripción | Tecnologías |
 | :--- | :--- | :--- |
-| **[🛡️ Detección de Cyberbullying](./05-cyberbullying-detection/)** | Pipeline integral (End-to-End) para la detección de contenido ofensivo mediante NLP avanzado. Incluye preprocesamiento masivo, traducción automática y comparación de modelos. | `DistilBERT`, `NLP`, `Deep Learning`, `Scikit-learn` |
+| **[🛡️ Detección de Cyberbullying](./deteccion-cyberbullying/)** | Pipeline integral (End-to-End) para la detección de contenido ofensivo mediante NLP avanzado. Incluye preprocesamiento masivo, traducción automática y comparación de modelos. | `DistilBERT`, `NLP`, `Deep Learning`, `Scikit-learn` |
 | **[👤 Controlador de Asistencia](./Controlador-Asistencia/)** | Sistema de biometría facial en tiempo real que identifica personas y registra asistencia automáticamente en archivos locales. | `OpenCV`, `Face Recognition`, `NumPy` |
 | **[🎙️ Asistente Virtual](./Asistente-Voz/)** | Asistente inteligente de voz capaz de procesar lenguaje natural para ejecutar comandos y automatizar tareas mediante diversas APIs. | `Speech-to-Text`, `APIs`, `Python` |
 | **[🕸️ Web Scraping](./Web-Scraping/)** | Herramientas de extracción de datos automatizada con lógica de paginación y descarga de archivos multimedia. | `BeautifulSoup`, `Requests`, `LXML` |
