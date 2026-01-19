@@ -9,7 +9,7 @@
 
 ## 📖 Sobre mí
 
-Soy un perfil híbrido apasionado por la **Ciencia de Datos** aplicada a la **Biomedicina**. Mi trabajo se centra en desarrollar soluciones inteligentes que combinan el análisis de datos masivos con el conocimiento científico profundo.
+Soy un perfil híbrido apasionado por la **Ciencia de Datos** con un background en **Bioquímica**. Mi trabajo se centra en desarrollar soluciones inteligentes que combinan el análisis de datos masivos con el conocimiento científico profundo.
 
 - 👨🏻‍💻 **Científico de Datos**: Especializado en la creación de pipelines de Machine Learning de extremo a extremo, NLP y Visión Artificial.
 - 🧬 **Bioquímico e Inmunólogo**: Experto en el manejo y análisis de datos científicos complejos y bioinformática.
