@@ -22,9 +22,7 @@ I am a hybrid profile passionate about **Data Science** with an academic backgro
 ## 💻 Technologies & Tools
 
 ### 🚀 Programming, AI & Data Science
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=py,r,sklearn,pandas,opencv,jupyter,vscode,github,mssql,mysql,html,css" />
-</p>
+<img src="https://skillicons.dev/icons?i=python,r,scikitlearn,pandas,opencv,jupyter,vscode,github,sqlserver,mysql,html,css" />
 
 ### 🧪 Data Analysis & Bioinformatics
 <p align="center">
