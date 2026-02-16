@@ -1,21 +1,27 @@
-import cv2
-import face_recognition as fr
-import os
-import numpy
+import pandas as pd
 from datetime import datetime
+import numpy as np
+import os
+import sys
+import face_recognition as fr
+import cv2
 
-# crear base de datos
-ruta = 'Empleados'
+
+# crear base de datos de empleados
+ruta_script = os.path.dirname(os.path.abspath(__file__))
+ruta = os.path.join(ruta_script, 'Empleados')
 mis_imagenes = []
 nombres_empleados = []
 lista_empleados = os.listdir(ruta)
 
 for nombre in lista_empleados:
-    imagen_actual = cv2.imread(f'{ruta}\{nombre}')
+    imagen_actual = cv2.imread(os.path.join(ruta, nombre))
     mis_imagenes.append(imagen_actual)
     nombres_empleados.append(os.path.splitext(nombre)[0])
 
 # codificar imagenes
+
+
 def codificar(imagenes):
 
     # crear una lista nueva
@@ -24,78 +30,67 @@ def codificar(imagenes):
     # pasar todas las imagenes a RGB
     for imagen in imagenes:
         imagen = cv2.cvtColor(imagen, cv2.COLOR_BGR2RGB)
-
         # codificar
         codificado = fr.face_encodings(imagen)[0]
-
         # agregar a la lista
         lista_codificada.append(codificado)
-
     # devolver lista codificada
     return lista_codificada
 
 # registrar los ingresos
-def registrar_ingresos(persona):
-    f = open('registro.csv', 'r+')
-    lista_datos = f.readlines()
-    nombres_registro = []
-    for linea in lista_datos:
-        ingreso = linea.split(',')
-        nombres_registro.append(ingreso[0])
 
-    if persona not in nombres_registro:
-        ahora = datetime.now()
-        string_ahora = ahora.strftime('%H,%M,%S')
-        f.writelines(f"\n{persona}, {string_ahora}")
+
+def registrar_ingresos(persona):
+    with open('registro.csv', 'a+') as f:
+        f.seek(0)
+        lineas = f.readlines()
+        nombres_registro = [linea.split(',')[0] for linea in lineas]
+
+        if persona not in nombres_registro:
+            ahora = datetime.now()
+            f.write(f"{persona},{ahora.strftime('%H:%M:%S')}\n")
 
 
 lista_empleados_codificada = codificar(mis_imagenes)
 
-# tomar una imagen de camara web
+# Iniciar webcam
 captura = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
-# leer imagen de la camara
-exito, imagen = captura.read()
+while True:
+    exito, imagen = captura.read()
 
-if not exito:
-    print("No se ha podido tomar la captura")
-else:
-    # reconocer cara en captura
-    cara_captura = fr.face_locations(imagen)
+    # Reducir imagen para mejorar rendimiento
+    img_pequena = cv2.resize(imagen, (0, 0), None, 0.25, 0.25)
+    img_pequena = cv2.cvtColor(img_pequena, cv2.COLOR_BGR2RGB)
 
-    # codificar cara capturada
-    cara_captura_codificada = fr.face_encodings(imagen, cara_captura)
+    # Localizar y codificar caras en el frame actual
+    caras_frame = fr.face_locations(img_pequena)
+    codif_frame = fr.face_encodings(img_pequena, caras_frame)
 
-    # buscar coincidencias
-    for caracodif, caraubic in zip(cara_captura_codificada, cara_captura):
-        coincidencias = fr.compare_faces(lista_empleados_codificada, caracodif)
+    for caracodif, caraubic in zip(codif_frame, caras_frame):
         distancias = fr.face_distance(lista_empleados_codificada, caracodif)
+        indice_coincidencia = np.argmin(distancias)
 
-
-
-        indice_coincidencia = numpy.argmin(distancias)
-
-        # mostrar coincidencias (si las hay)
-        if distancias[indice_coincidencia] > 0.6:
-            print("No coincide con ninguno de nuestros empleados")
-        else:
-            # buscar el nombre del empleado encontrado
+        if distancias[indice_coincidencia] < 0.6:
             nombre = nombres_empleados[indice_coincidencia]
 
-            # ubicar cara en la foto
-            y1, x2, y2, x1 = caraubic
-            cv2.rectangle(imagen, (x1, y1), (x2, y2), (255, 0, 0), 2)
-            cv2.rectangle(imagen, (x1, y2 - 35), (x2, y2), (255, 0, 0), cv2.FILLED)
-            cv2.putText(imagen, nombre, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_PLAIN, 1, (255,255,255), 2)
-
+            # Dibujar rectángulo y nombre en la imagen
+            y1, x2, y2, x1 = [v * 4 for v in caraubic]
+            cv2.rectangle(imagen, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.putText(imagen, nombre, (x1, y1 - 10),
+                        cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
 
             registrar_ingresos(nombre)
 
-            # mostrar la imagen obtenida
-            cv2.imshow('Imagen web', imagen)
+    cv2.imshow('Control de Asistencia', imagen)
 
-            # mantener ventana abierta
-            cv2.waitKey(0)
+    # Cerrar con la tecla 'ESC'
+    if cv2.waitKey(1) == 27:
+        break
 
+captura.release()
+cv2.destroyAllWindows()
 
-
+# Exportar a Excel
+df = pd.read_csv('registro.csv', names=['Nombre', 'Hora_Ingreso'])
+df.to_excel('Asistencia_Final.xlsx', index=False)
