@@ -26,7 +26,7 @@ Lógica de sistemas, gestión de recursos multimedia e implementación de algori
 
 1. **Clona el repositorio**:
    ```bash
-   git clone [https://github.com/TuUsuario/Python-Orientado-Objetos.git](https://github.com/TuUsuario/Python-Orientado-Objetos.git)
+   git clone [https://github.com/TuUsuario/Python-Orientado-Objetos.git](https://github.com/ausdanieldr-ui/Python-Orientado-Objetos.git)
 
 2. **Entra en la carpeta del proyecto**:
    ```bash
@@ -40,6 +40,21 @@ Lógica de sistemas, gestión de recursos multimedia e implementación de algori
    ```bash
    python src/main.py 
 
+
+---
+
+## 🎮 Controles del Juego
+
+Para defender la Tierra en **Invasión Dorito**, utiliza los siguientes mandos:
+
+| Acción | Tecla |
+| :--- | :--- |
+| **Mover a la Izquierda** | ⬅️ Flecha Izquierda |
+| **Mover a la Derecha** | ➡️ Flecha Derecha |
+| **Disparar Proyectil** | ␣ Barra Espaciadora |
+| **Cerrar Juego** | ❌ Cerrar ventana o Tecla ESC |
+
+---
 
 
 

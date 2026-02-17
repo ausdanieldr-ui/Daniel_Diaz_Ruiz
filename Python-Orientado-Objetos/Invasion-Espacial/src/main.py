@@ -1,7 +1,18 @@
 import pygame
 import random
 import math
+import os
 from pygame import mixer
+
+# cofigurar la ruta de los archivos
+ruta_src = os.path.dirname(os.path.abspath(__file__))
+ruta_base = os.path.dirname(ruta_src)
+ruta_assets = os.path.join(ruta_base, 'assets')
+
+
+def obtener_ruta(nombre_archivo):
+    return os.path.join(ruta_assets, nombre_archivo)
+
 
 # Iniciar Pygame
 pygame.init()
@@ -11,19 +22,19 @@ pantalla = pygame.display.set_mode((800, 600))
 
 # Título e Icono
 pygame.display.set_caption("Invasión Dorito", )
-icono = pygame.image.load("/assets/ovni.png")
+icono = pygame.image.load(obtener_ruta("ovni.png"))
 pygame.display.set_icon(icono)
-fondo = pygame.image.load('/assets/fondo.png')
+fondo = pygame.image.load(obtener_ruta("fondo.png"))
 
 
 # agregar musica
-mixer.music.load('/assets/MusicaFondo.mp3')
+mixer.music.load(obtener_ruta("MusicaFondo.mp3"))
 mixer.music.set_volume(0.6)
 mixer.music.play(-1)
 
 
 # variables del Jugador
-img_jugador = pygame.image.load("/assets/tractores.png")
+img_jugador = pygame.image.load(obtener_ruta("tractores.png"))
 jugador_x = 368
 jugador_y = 500
 jugador_x_cambio = 0
@@ -37,7 +48,7 @@ enemigo_y_cambio = []
 cantidad_enemigos = 8
 
 for e in range(cantidad_enemigos):
-    img_enemigo.append(pygame.image.load("/assets/trump.png"))
+    img_enemigo.append(pygame.image.load(obtener_ruta("trump.png")))
     enemigo_x.append(random.randint(0, 736))
     enemigo_y.append(random.randint(50, 200))
     enemigo_x_cambio.append(5)
@@ -45,7 +56,7 @@ for e in range(cantidad_enemigos):
 
 
 # variables de la bala
-img_bala = pygame.image.load("/assets/pajita.png")
+img_bala = pygame.image.load(obtener_ruta("pajita.png"))
 bala_x = 0
 bala_y = 500
 bala_x_cambio = 0
@@ -55,12 +66,12 @@ bala_visible = False
 
 # Puntos
 puntos = 0
-fuente = pygame.font.Font('/assets/Begok v15_2015___free.ttf', 32)
+fuente = pygame.font.Font(obtener_ruta('Begok v15_2015___free.ttf'), 32)
 texto_x = 10
 texto_y = 10
 
 # texto final del juego
-fuente_final = pygame.font.Font('/assets/begokv15__2015___free.otf', 40)
+fuente_final = pygame.font.Font(obtener_ruta('begokv15__2015___free.otf'), 40)
 
 
 def texto_final():
@@ -125,7 +136,7 @@ while se_ejecuta:
             if evento.key == pygame.K_RIGHT:
                 jugador_x_cambio = 3
             if evento.key == pygame.K_SPACE:
-                sonido_bala = mixer.Sound('/assets/disparo.mp3')
+                sonido_bala = mixer.Sound(obtener_ruta('disparo.mp3'))
                 sonido_bala.play()
                 if not bala_visible:
                     bala_x = jugador_x
@@ -167,7 +178,7 @@ while se_ejecuta:
         # colision
         colision = hay_colision(enemigo_x[e], enemigo_y[e], bala_x, bala_y)
         if colision:
-            sonido_colision = mixer.Sound('/assets/Golpe.mp3')
+            sonido_colision = mixer.Sound(obtener_ruta('Golpe.mp3'))
             sonido_colision.play()
             bala_y = 500
             bala_visible = False
