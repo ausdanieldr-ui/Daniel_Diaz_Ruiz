@@ -125,5 +125,7 @@ try:
     df = pd.read_csv(ruta_csv)
     df.to_excel('Asistencia_Final.xlsx', index=False)
     print("📊 Reporte Excel 'Asistencia_Final.xlsx' generado con éxito.")
+except FileNotFoundError:
+    print("⚠️ Error al exportar: Archivo no encontrado.")
 except Exception as e:
     print(f"⚠️ Error al exportar: {e}")
