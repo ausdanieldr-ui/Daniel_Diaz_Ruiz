@@ -77,7 +77,10 @@ fuente_final = pygame.font.Font(obtener_ruta('begokv15__2015___free.otf'), 40)
 def texto_final():
     mi_fuente_final = fuente_final.render(
         "juego terminado", True, (255, 255, 255))
+    subtexto = fuente.render(
+        "pulsa 'r' para volver a jugar", True, (255, 255, 255))
     pantalla.blit(mi_fuente_final, (90, 300))
+    pantalla.blit(subtexto, (120, 360))
 
 
 # funcion mostrar puntos
@@ -116,9 +119,10 @@ def hay_colision(x_1, y_1, x_2, y_2):
 
 
 # loop del juego
+juego_terminado = False
 se_ejecuta = True
-while se_ejecuta:
 
+while se_ejecuta:
     # imagen de fono
     pantalla.blit(fondo, (0, 0))
 
@@ -142,6 +146,13 @@ while se_ejecuta:
                     bala_x = jugador_x
                     disparar_bala(bala_x, bala_y)
 
+            if evento.key == pygame.K_r and juego_terminado:
+                puntos = 0
+                juego_terminado = False
+                for i in range(cantidad_enemigos):
+                    enemigo_x[i] = random.randint(0, 736)
+                    enemigo_y[i] = random.randint(50, 200)
+
         # evento soltar flechas
         if evento.type == pygame.KEYUP:
             if evento.key == pygame.K_LEFT or evento.key == pygame.K_RIGHT:
@@ -164,6 +175,7 @@ while se_ejecuta:
         if enemigo_y[e] > 470:
             for k in range(cantidad_enemigos):
                 enemigo_y[k] = 1000
+            juego_terminado = True
             texto_final()
             break
 
