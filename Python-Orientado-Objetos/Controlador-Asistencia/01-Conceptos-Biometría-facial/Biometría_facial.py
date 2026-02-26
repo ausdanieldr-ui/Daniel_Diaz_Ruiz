@@ -1,10 +1,8 @@
 # Como funciona la biometría facial:
-    # Paso 1: reconocimiento facil
-    # Paso 2: análisis facial
-    # Paso 3: convertir imagen en datos
-    # Paso 4: buscar coincidencias
-
-# !!! no se instaló bien face_recognition_models!!
+# Paso 1: reconocimiento facil
+# Paso 2: análisis facial
+# Paso 3: convertir imagen en datos
+# Paso 4: buscar coincidencias
 
 import cv2
 import face_recognition as fr
@@ -30,27 +28,28 @@ cara_codificada_B = fr.face_encodings(foto_prueba)[0]
 cv2.rectangle(foto_control,
               (lugar_cara_A[3], lugar_cara_A[0]),
               (lugar_cara_A[1], lugar_cara_A[2]),
-              (0,255,0),
+              (0, 255, 0),
               2)
 cv2.rectangle(foto_prueba,
               (lugar_cara_B[3], lugar_cara_B[0]),
               (lugar_cara_B[1], lugar_cara_B[2]),
-              (0,255,0),
+              (0, 255, 0),
               2)
 
 # realizar comparación
 resultado = fr.compare_faces([cara_codificada_A], cara_codificada_B)
 
 # medida de la distancia
-distancia = fr.face_distance([cara_codificada_A], cara_codificada_B) # se puede moficiar la tolerancia poniendo un valor, normalmente es >0.6
+# se puede moficiar la tolerancia poniendo un valor, normalmente es >0.6
+distancia = fr.face_distance([cara_codificada_A], cara_codificada_B)
 
 # mostrar resultado
 cv2.putText(foto_prueba,
             f'{resultado} {distancia.round(2)}',
-            (50,50),
+            (50, 50),
             cv2.FONT_HERSHEY_PLAIN,
             1,
-            (255,0,0),
+            (255, 0, 0),
             2)
 
 # mostrar imagenes
@@ -60,4 +59,3 @@ cv2.imshow('Foto Prueba', foto_prueba)
 # mantener programa abierto
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-

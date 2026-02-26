@@ -6,6 +6,7 @@ import pyjokes
 import webbrowser
 import datetime
 import wikipedia
+import requests
 
 # visualizar opciones descargadas de idioma de voz
 engine = pyttsx3.init()
@@ -23,7 +24,7 @@ def transformar_audio_en_texto():
     # configurar el microfono
     with sr.Microphone() as origen:
 
-        # tiempo de espera (a vece corrige errores en la escucha)
+        # tiempo de espera (a veces corrige errores en la escucha)
         r.pause_threshold = 0.8
 
         # informar que comenzo la grabacion
@@ -55,16 +56,7 @@ def transformar_audio_en_texto():
         except sr.RequestError:
 
             # prueba de que no comprendio el audio
-            print("ups, no hay servivio")
-
-            # devolver error
-            return "Sigo esperando"
-
-        # error inesperado
-        except:
-
-            # prueba de que no comprendio el audio
-            print("ups, algo ha salido mal")
+            print("ups, no hay servicio")
 
             # devolver error
             return "Sigo esperando"
@@ -73,52 +65,23 @@ def transformar_audio_en_texto():
 # funcion para que el asistente pueda ser escuchado
 def hablar(mensaje):
 
-    # encender el motor de pyttsx3
-    engine = pyttsx3.init()
-
     # pronunciar mensaje
     engine.say(mensaje)
     engine.runAndWait()
 
-
-# informar el día de la semana
-def pedir_dia():
-
-    # crear variable con datos de hoy
-    dia = datetime.date.today()
-    print(dia)
-
-    # crear variable para el dia de semana
-    dia_semana = dia.weekday()
-    print(dia_semana)
-
-    # diccionarios semana
-    calendario = {0: 'Lunes',
-                  1: 'Martes',
-                  2: 'Miércoles',
-                  3: 'Jueves',
-                  4: 'Viernes',
-                  5: 'Sábado',
-                  6: 'Domingo'}
-
-    # decir el dia de la semana
-    hablar(f'Hoy es {calendario[dia_semana]}')
-
-
-# informar que hora es
-def pedir_hora():
-
-    # crear una variable con datos de la hora
-    hora = datetime.datetime.now()
-    hora = f'En este momento son las {hora.hour} y {hora.minute}'
-    print(hora)
-
-    # decir la hora
-    hablar(hora)
-
-
 # funcion saludo incial
+
+
 def saludo_inicial():
+    hora = datetime.datetime.now()
+    if hora.hour < 6 or hora.hour > 20:
+        momento = 'Buenas noches'
+    elif 6 <= hora.hour < 13:
+        momento = 'Buenos días'
+    else:
+        momento = 'Buenas tardes'
+    hablar(
+        f'{momento} soy tu asistente personal. Por favor, dime en que puedo ayudarle')
 
     # crear variable con datos de hora
     hora = datetime.datetime.now()
@@ -129,12 +92,57 @@ def saludo_inicial():
     else:
         momento = 'Buenas tardes'
 
-    # decir el saludo
-    hablar(
-        f'{momento} soy tu asistente personal. Por favor, dime en que puedo ayudarle')
+# informar el día de la semana
 
+
+def pedir_dia():
+    fecha = datetime.date.today()
+    dias_semana = {0: 'Lunes', 1: 'Martes', 2: 'Miércoles', 3: 'Jueves',
+                   4: 'Viernes', 5: 'Sábado', 6: 'Domingo'}
+    meses = {1: 'enero', 2: 'febrero', 3: 'marzo', 4: 'abril', 5: 'mayo', 6: 'junio',
+             7: 'julio', 8: 'agosto', 9: 'septiembre', 10: 'octubre', 11: 'noviembre', 12: 'diciembre'}
+
+    dia_nombre = dias_semana[fecha.weekday()]
+    mes_nombre = meses[fecha.month]
+
+    mensaje = f'Hoy es {dia_nombre}, {fecha.day} de {mes_nombre} de {fecha.year}'
+    print(mensaje)
+    hablar(mensaje)
+
+
+# informar que hora es
+def pedir_hora():
+    ahora = datetime.datetime.now()
+    mensaje = f'En este momento son las {ahora.hour} y {ahora.minute} minutos'
+    print(mensaje)
+    hablar(mensaje)
+
+
+def consultar_noticias_ia():
+    # Configuración de la API
+    api_key = 'e95d013336304d46a341a5eeb4a22200'
+    url = f'https://newsapi.org/v2/everything?q=Artificial Intelligence&language=es&sortBy=publishedAt&pageSize=3&apiKey={api_key}'
+
+    try:
+        respuesta = requests.get(url)
+        datos = respuesta.json()
+        articulos = datos['articles']
+
+        hablar(
+            "He encontrado las 3 noticias más recientes sobre inteligencia artificial:")
+
+        for i, articulo in enumerate(articulos):
+            titulo = articulo['title']
+            hablar(f"Noticia {i+1}: {titulo}")
+            # Para que lo tengas en consola por si quieres leerlo
+            print(f"Enlace: {articulo['url']}")
+
+    except:
+        hablar("Perdone, he tenido problemas al conectar con el servidor de noticias")
 
 # funcion centro de pedidos
+
+
 def pedir_cosas():
 
     # activar el saludo inicial
@@ -154,7 +162,7 @@ def pedir_cosas():
             webbrowser.open('https://www.youtube.com/')
             continue
         elif 'abre el navegador' in pedido:
-            hablar('Lo que usted quiera señor')
+            hablar('ahora mismo lo abro')
             webbrowser.open(
                 'https://www.google.com/?zx=1756456138580&no_sw_cr=1')
             continue
@@ -166,45 +174,31 @@ def pedir_cosas():
             continue
         elif 'busca en wikipedia' in pedido:
             hablar('Perfecto, voy a buscarlo')
-            pedido = pedido.replace('busca en wikipedia', '')
-            wikipedia.set_lang('es')
-            resultado = wikipedia.summary(pedido, sentences=1)
-            hablar('En wikipedia he encontrado lo siguiente: ')
-            hablar(resultado)
+            termino_busqueda = pedido.replace('busca en wikipedia', '').strip()
+            if termino_busqueda == "":
+                hablar("No me has dicho qué quieres que busque.")
+            else:
+                try:
+                    wikipedia.set_lang('es')
+                    resultado = wikipedia.summary(
+                        termino_busqueda, sentences=1)
+                    hablar('En wikipedia he encontrado lo siguiente: ')
+                    hablar(resultado)
+                except:
+                    hablar("No he podido encontrar información sobre eso")
             continue
         elif 'busca en internet' in pedido:
             hablar('Voy a ello')
-            pedido = pedido.replace('busca en internet', '')
-            pywhatkit.search(pedido)
-            hablar('Esto es lo que he encontrado')
-            continue
-        elif 'abre spotify' in pedido:
-            hablar('Okey, abro spotify')
-            webbrowser.open('https://open.spotify.com/')
-            continue
-        elif 'reproduce' in pedido:
-            hablar('Me gusta, voy a ponerlo')
-            pywhatkit.playonyt(pedido)
+            termino = pedido.replace('busca en internet', '').strip()
+            pywhatkit.search(termino)
+            hablar(f'Esto es lo que he encontrado sobre {termino}')
             continue
         elif 'chiste' in pedido:
             hablar(pyjokes.get_joke('es'))
             continue
-        elif 'precio de las acciones' in pedido:
-            accion = pedido.split('de')[-1].strip()
-            cartera = {'apple': 'APPL',
-                       'amazon': 'AMZN',
-                       'google': 'GOOGL'}
-            try:
-                accion_buscada = cartera[accion]
-                accion_buscada = yf.Ticker(accion_buscada)
-                precio_actual = accion_buscada.info['regularMarketPrice']
-                hablar(
-                    f'Las encontré, el precio de {accion} es {precio_actual}')
-                continue
-            except:
-                hablar("Perdone, pero no lo he encontrado")
-                continue
-
+        elif 'dime las noticias' in pedido or 'artículos de ia' in pedido:
+            consultar_noticias_ia()
+            continue
         elif 'adiós' in pedido:
             hablar('Es un placer para mí ayudarle, que tenga buen día')
             break
