@@ -6,7 +6,7 @@
 # 👋 Hola, soy Dani
 
 <p align="center">
-  <img src="assets/banner_principal.png" width="100%">
+  <img src="assets/banner_principal.png" width="50%">
 </p>
 
 ## 📖 Sobre mí
