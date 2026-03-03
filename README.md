@@ -5,7 +5,7 @@
 # 👋 Hi, I'm Dani
 
 <p align="center">
-  <img src="banner-principal.png" width="100%" alt="Dani Díaz - Data Scientist & Biotech">
+  <img src="assets/banner_principal.png" width="100%">
 </p>
 
 ## 📖 About Me

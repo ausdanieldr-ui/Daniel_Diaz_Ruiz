@@ -10,10 +10,21 @@ import requests
 
 # visualizar opciones descargadas de idioma de voz
 engine = pyttsx3.init()
-for voz in engine.getProperty('voices'):
-    print(voz)
+voces = engine.getProperty('voices')
 
-# escuchar nuestro microfono y devolver el audio como texto
+for voz in voces:
+    if 'spanish' in voz.name.lower() or 'es-' in voz.id.lower():
+        engine.setProperty('voice', voz.id)
+        break
+
+engine.setProperty('rate', 160)  # Velocidad ligeramente más natural
+
+
+def hablar(mensaje):
+    """Pronuncia el mensaje y espera a que termine antes de seguir"""
+    print(f"Asistente dice: {mensaje}")  # Para depurar en terminal
+    engine.say(mensaje)
+    engine.runAndWait()
 
 
 def transformar_audio_en_texto():
@@ -62,16 +73,7 @@ def transformar_audio_en_texto():
             return "Sigo esperando"
 
 
-# funcion para que el asistente pueda ser escuchado
-def hablar(mensaje):
-
-    # pronunciar mensaje
-    engine.say(mensaje)
-    engine.runAndWait()
-
 # funcion saludo incial
-
-
 def saludo_inicial():
     hora = datetime.datetime.now()
     if hora.hour < 6 or hora.hour > 20:
@@ -105,40 +107,34 @@ def pedir_dia():
     dia_nombre = dias_semana[fecha.weekday()]
     mes_nombre = meses[fecha.month]
 
-    mensaje = f'Hoy es {dia_nombre}, {fecha.day} de {mes_nombre} de {fecha.year}'
-    print(mensaje)
-    hablar(mensaje)
+    hablar(f'Hoy es {dia_nombre}, {fecha.day} de {mes_nombre} de {fecha.year}')
 
 
 # informar que hora es
 def pedir_hora():
     ahora = datetime.datetime.now()
-    mensaje = f'En este momento son las {ahora.hour} y {ahora.minute} minutos'
-    print(mensaje)
-    hablar(mensaje)
+    hablar(
+        f'En este momento son las {ahora.hour} horas con {ahora.minute} minutos y {ahora.second} segundos')
 
 
 def consultar_noticias_ia():
     # Configuración de la API
     api_key = 'e95d013336304d46a341a5eeb4a22200'
-    url = f'https://newsapi.org/v2/everything?q=Artificial Intelligence&language=es&sortBy=publishedAt&pageSize=3&apiKey={api_key}'
+    url = f'https://newsapi.org/v2/top-headlines?category=technology&language=es&apiKey={api_key}'
 
     try:
         respuesta = requests.get(url)
         datos = respuesta.json()
-        articulos = datos['articles']
+        articulos = datos.get('articles', [])[:3]
 
-        hablar(
-            "He encontrado las 3 noticias más recientes sobre inteligencia artificial:")
-
-        for i, articulo in enumerate(articulos):
-            titulo = articulo['title']
-            hablar(f"Noticia {i+1}: {titulo}")
-            # Para que lo tengas en consola por si quieres leerlo
-            print(f"Enlace: {articulo['url']}")
-
+        if articulos:
+            hablar("Estas son las noticias tecnológicas de hoy:")
+            for art in articulos:
+                hablar(art['title'])
+        else:
+            hablar("No he encontrado noticias nuevas en este momento.")
     except:
-        hablar("Perdone, he tenido problemas al conectar con el servidor de noticias")
+        hablar("No pude conectar con el servidor de noticias.")
 
 # funcion centro de pedidos
 
@@ -172,36 +168,39 @@ def pedir_cosas():
         elif 'qué hora es' in pedido:
             pedir_hora()
             continue
+        elif 'busca en internet' in pedido:
+            hablar('Ya mismo estoy en ello')
+            termino = pedido.replace('busca en internet', '').strip()
+            hablar(f"Estos son los resultados para {termino}")
+            pywhatkit.search(termino)
+            continue
         elif 'busca en wikipedia' in pedido:
-            hablar('Perfecto, voy a buscarlo')
-            termino_busqueda = pedido.replace('busca en wikipedia', '').strip()
-            if termino_busqueda == "":
+            # Quitamos la frase de activación y limpiamos espacios
+            termino = pedido.replace('busca en wikipedia', '').strip()
+
+            if not termino:
                 hablar("No me has dicho qué quieres que busque.")
             else:
                 try:
                     wikipedia.set_lang('es')
-                    resultado = wikipedia.summary(
-                        termino_busqueda, sentences=1)
-                    hablar('En wikipedia he encontrado lo siguiente: ')
-                    hablar(resultado)
-                except:
-                    hablar("No he podido encontrar información sobre eso")
-            continue
-        elif 'busca en internet' in pedido:
-            hablar('Voy a ello')
-            termino = pedido.replace('busca en internet', '').strip()
-            pywhatkit.search(termino)
-            hablar(f'Esto es lo que he encontrado sobre {termino}')
+                    # sentences=1 para que sea un resumen corto
+                    resultado = wikipedia.summary(termino, sentences=1)
+                    hablar(f"He encontrado esto: {resultado}")
+                except Exception:
+                    hablar("Lo siento, no pude encontrar esa información.")
             continue
         elif 'chiste' in pedido:
-            hablar(pyjokes.get_joke('es'))
+            hablar(pyjokes.get_joke(language='es', category='all'))
             continue
-        elif 'dime las noticias' in pedido or 'artículos de ia' in pedido:
+        elif 'dime las noticias' in pedido or 'noticias' in pedido:
             consultar_noticias_ia()
             continue
         elif 'adiós' in pedido:
-            hablar('Es un placer para mí ayudarle, que tenga buen día')
-            break
+            hablar('Me voy a descansar, cualquier cosa me avisas. ¡Adiós!')
+        elif 'gracias' in pedido:
+            hablar('De nada, para eso estoy aquí. ¡Hasta luego!')
+        break
 
 
-pedir_cosas()
+if __name__ == "__main__":
+    pedir_cosas()
