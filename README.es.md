@@ -5,7 +5,9 @@
 
 # 👋 Hola, soy Dani
 
-<img width="1206" height="758" alt="encabezado_github" src="https://github.com/user-attachments/assets/ccee3093-6a30-489e-b928-c34b89300bc5" />
+<p align="center">
+  <img src="assets/banner_principal.png" width="100%">
+</p>
 
 ## 📖 Sobre mí
 
